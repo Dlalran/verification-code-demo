@@ -49,7 +49,7 @@ public class CodeController {
             result = 2;
         } else {
 //            请求验证码API
-            CodeResponse codeResponse = restTemplate.getForObject("http://106.ihuyi.com/webservice/sms.php?method=Submit&account=C33821181&password=1ae32f1b686b99c6424f9faeaad86df8&mobile={mobile}&content={content}&format=json", CodeResponse.class, map);
+            CodeResponse codeResponse = restTemplate.getForObject("http://106.ihuyi.com/webservice/sms.php?method=Submit&account=*****&password=*****8&mobile={mobile}&content={content}&format=json", CodeResponse.class, map);
             if (codeResponse.getCode() == 2) {
                 log.info("成功发送短信验证码，API返回内容为" + codeResponse);
 //                key为手机号，value为验证码，有效时间为60s放入Redis中
