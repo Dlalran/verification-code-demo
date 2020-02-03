@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    引入jQuery和Bootstrap，此处通过Webjars Locator省去了版本号-->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <title>Title</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.css" />
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#getBtn").click(function() {
+                var $phoneNum = $("#phoneNum").val();
+                $.get(
+                    "getCode",
+                    "phoneNum=" + $phoneNum,
+                    function(result) {
+                        if (result == "0") {
+                            $("#msg").text("验证码发送失败");
+                            $("#msg").css("color", "red")
+                        }
+                        else if (result == "1") {
+                            $("#msg").text("验证码已发送");
+                            $("#msg").css("color", "darkblue")
+                        } else {
+                            $("#msg").text("60秒内仅能获取一次");
+                            $("#msg").css("color", "brown")
+                        }
+                    },
+                    "text"
+                );
+            });
+        });
+    </script>
+</head>
+<body>
+    <form action="checkCode" method="post">
+        <input id="phoneNum" name="phoneNum" placeholder="请输入接收验证码的手机号" />
+        <input type="button" id="getBtn" value="获取验证码"/>
+        <p id="msg"></p>
+        <input id="code" name="code" placeholder="请输入收到的验证码" />
+        <input type="submit" value="提交"/>
+    </form>
+</body>
+</html>
