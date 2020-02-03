@@ -5,11 +5,11 @@ spring:
   redis:
     #    Redis服务端主机地址
 #    host: 192.168.2.128
-    host: 139.196.88.44
+    host: *****
     #    服务端端口号
     port: 6379
     #    服务端连接密码
-    password: 12345
+    password: *****
     #    连接超时时间(ms)
     timeout: 2000
     lettuce:
